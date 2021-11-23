@@ -3,7 +3,7 @@ const seedUsers = [
         username: "A",
         displayname: "Person A is a Hawker",
         password: "A",
-        display_picture: "xhttps://images.unsplash.com/photo-1505817368554-2165b1e42f85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGF3a2VyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+        display_picture: "https://images.unsplash.com/photo-1505817368554-2165b1e42f85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGF3a2VyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
         favourites: [],
         stalls: [],
         is_hawker: true,

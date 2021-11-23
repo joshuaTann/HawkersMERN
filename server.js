@@ -32,8 +32,8 @@ const usersController = require("./controllers/usersController");
 app.use("/api/users", usersController);
 const carsController = require("./controllers/hawkersController");
 app.use("/api/hawkers", carsController);
-// const sessionsController = require("./controllers/sessionsController");
-// app.use("/api/sessions", sessionsController);
+const sessionsController = require("./controllers/sessionsController");
+app.use("/api/sessions", sessionsController);
 
 //* ROUTES
 
