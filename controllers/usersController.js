@@ -57,7 +57,7 @@ router.post("/new", async (req, res) => {
     console.log(newUser);
     res.json("Success");
   }
-  // else, tell user to suck thumb and choose another username!
+  // Username in use!
   else {
     res.json("This username is already in use");
   }

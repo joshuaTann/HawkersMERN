@@ -4,7 +4,7 @@ import ShowStall from './GlobalComponents/ShowStall';
 import NavigationBar from './NavigationBar/NavigationBar';
 import About from './NavigationBar/About';
 import Login from './UserComponents/Login';
-// import SignUp from './NavigationBar/SignUp';
+import SignUp from './UserComponents/SignUp';
 import AddStall from './GlobalComponents/AddStall';
 // import UserDash from './UserComponent/UserDash';
 import EditStall from './GlobalComponents/EditStall';
@@ -29,11 +29,11 @@ function App() {
               <Route path="/hawkers" element={<Homepage/>} />
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login />} />
-              {/* <Route path="/signup" element={<SignUp />} /> */}
+              <Route path="/signup" element={<SignUp />} />
               <Route path="/hawkers/:id" element={<ShowStall />} />
               <Route path="/hawkers/:id/edit" element={<EditStall />} />
               <Route path="/hawkers/addstall" element={<AddStall />} />
-              {/* <Route path="/hawkers/userdash" element={<UserDash />} /> */}
+              {/* <Route path="/users/:id/" element={<UserDash />} /> */}
             </Routes>
           </Box>
         </BrowserRouter>

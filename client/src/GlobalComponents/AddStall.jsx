@@ -1,10 +1,13 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Typography, TextField, Button, Checkbox } from "@mui/material";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, Navigate } from "react-router-dom";
+import { DataContext } from "../App";
 
 
 function AddStall() {
+    const { user } = useContext(DataContext);
+
     const [stallName, setStallName] = useState("");
     const [image, setImage] = useState("");
     const [AddressLine1, setAddressLine1] = useState("");
@@ -12,7 +15,8 @@ function AddStall() {
     const [postcode, setPostcode] = useState("");
     const [openingTime, setOpeningTime] = useState("");
     const [closingTime, setClosingTime] = useState("");
-    const [AmIOpen, setAmIOpen] = useState(true);
+    const AmIOpen = true
+    const owner = user._id
     const navigate = useNavigate()
 
     const typeStallName = (event) => {
@@ -36,11 +40,12 @@ function AddStall() {
     const typeClosingTime = (event) => {
         setClosingTime(event.target.value);
     };
-    const typeAmIOpen = (event) => {
-        setAmIOpen(event.target.value);
-    };
 
-    const addHawker = async (Name, Image, AddressLine1, AddressLine2, Postcode, OpeningTime, ClosingTime, AmIOpen) => {
+    if (!!user._id === false) {
+        return <Navigate to={"/login"} />
+    }
+
+    const addHawker = async (Name, Image, AddressLine1, AddressLine2, Postcode, OpeningTime, ClosingTime, AmIOpen, owner) => {
         try{
         const response = await fetch(`/api/hawkers/new/`, {
             method: "POST",
@@ -56,6 +61,7 @@ function AddStall() {
                 OpeningTime,
                 ClosingTime,
                 AmIOpen,
+                owner,
             }),
         });
         const data = await response.json();
@@ -133,13 +139,7 @@ function AddStall() {
                         placeholder="Closing Time"
                         onChange={typeClosingTime}
                     />
-                    <Checkbox
-                        label="Open?"
-                        defaultChecked
-                        onChange={typeAmIOpen}
-                        inputProps={{ 'aria-label': 'controlled' }}
-                    />
-                    <Button onClick={() => addHawker(stallName, image, AddressLine1, AddressLine2, postcode, openingTime, closingTime, AmIOpen)}>Add stall</Button>
+                    <Button onClick={() => addHawker(stallName, image, AddressLine1, AddressLine2, postcode, openingTime, closingTime, AmIOpen, owner)}>Add stall</Button>
                 </form>
             </div>
         </div>
