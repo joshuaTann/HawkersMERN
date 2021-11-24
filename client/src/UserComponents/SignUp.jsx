@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink, Navigate } from "react-router-dom";
 import { useState } from "react";
 import "../App.css";
+import { Checkbox } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
@@ -12,6 +13,7 @@ function SignUp() {
   const [name, setName] = useState("");
   const [inputpassword, setInputPassword] = useState("");
   const [inputdisplayName, setInputDisplayName] = useState("");
+  const [wannabehawker, setWannabehawker] = useState(false)
   const [status, setStatus] = useState("");
 
   const typeName = (event) => {
@@ -25,6 +27,10 @@ function SignUp() {
     setInputDisplayName(event.target.value);
   };
 
+  const typeWannabeHawker = () => {
+    setWannabehawker(!wannabehawker);
+};
+
   const CreateUser = async (event) => {
     event.preventDefault();
     // check if username & password is accidentally an empty value.
@@ -32,6 +38,7 @@ function SignUp() {
       username: !!name ? name : null,
       password: !!inputpassword ? inputpassword : null,
       displayname: !!inputdisplayName ? inputdisplayName : null,
+      is_hawker: wannabehawker
     };
 
     // if username OR password is null, alert user and prevent signing up!
@@ -98,6 +105,12 @@ function SignUp() {
               label="Desired Name"
               variant="outlined"
               onChange={typeDisplayName}
+            />
+            <label>Are you a stall owner?</label>
+            <Checkbox
+              name="wannabehawker"
+              onChange={typeWannabeHawker}
+              inputProps={{ 'aria-label': 'controlled' }}
             />
             <Button type="submit">Create Account</Button>
           </form>

@@ -118,7 +118,7 @@ function EditStall() {
         });
         const data = await response.json();
         console.log(data);
-        navigate("/Hawkers")
+        navigate(`/users/${hawker?.owner}`)
     };
 
     return (

@@ -67,7 +67,7 @@ function AddStall() {
         const data = await response.json();
         console.log(data);
     } finally {
-        navigate("/hawkers")
+        navigate(`/users/${owner}/`)
     }
     };
 

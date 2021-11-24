@@ -30,8 +30,8 @@ app.use(express.static(path.join(__dirname, "./client/dist")));
 app.use(express.json());
 const usersController = require("./controllers/usersController");
 app.use("/api/users", usersController);
-const carsController = require("./controllers/hawkersController");
-app.use("/api/hawkers", carsController);
+const hawkersController = require("./controllers/hawkersController");
+app.use("/api/hawkers", hawkersController);
 const sessionsController = require("./controllers/sessionsController");
 app.use("/api/sessions", sessionsController);
 

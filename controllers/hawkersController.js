@@ -34,30 +34,24 @@ router.get("/:id", async (req, res) => {
 
 //! CREATE 
 router.post("/new", async (req, res) => {
-  try{
-  const id = req.body.owner
-  console.log("Stall owner ID", id)
-  console.log(req.body)
-  // const hawker = await new Hawkers(req.body);
-  // hawker.save();
-  const hawker = await Hawkers.create(req.body);
-  const hawkerID = await Hawkers.find(req.body, "_id");
-  console.log("hawker id", hawkerID);
-  const user = await Users.findByIdAndUpdate(id, { $push: { stalls: hawkerID } });
-  console.log(user);
-  res.status(200).json(hawker);
+  try {
+    const id = req.body.owner
+    console.log("Stall owner ID", id)
+    console.log(req.body)
+    // const hawker = await new Hawkers(req.body);
+    // hawker.save();
+    const hawker = await Hawkers.create(req.body);
+    const hawkerID = await Hawkers.find(req.body, "_id");
+    console.log("hawker id", hawkerID);
+    const user = await Users.findByIdAndUpdate(id, { $push: { stalls: hawkerID } });
+    console.log(user);
+    res.status(200).json(hawker);
   } catch (error) {
     res.json({ error });
   }
 });
 
 
-//! EDIT
-// router.get("/:id/edit", async (req, res) => {
-//     const { id } = req.params;
-//     const thisCar = await Cars.findById(id);
-//     res.json(thisCar);
-//   })
 
 
 //! UPDATE
@@ -78,12 +72,14 @@ router.delete("/:id", async (req, res) => {
     const result = await Hawkers.findByIdAndDelete(id);
     const user = await Users.findByIdAndUpdate(userIDnumber, { $pull: { stalls: id } });
     res.json(result);
-
-
+    
+    
   } catch (error) {
     res.json({ error });
   }
 });
+
+
 
 
 module.exports = router;

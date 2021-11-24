@@ -6,8 +6,9 @@ import About from './NavigationBar/About';
 import Login from './UserComponents/Login';
 import SignUp from './UserComponents/SignUp';
 import AddStall from './GlobalComponents/AddStall';
-// import UserDash from './UserComponent/UserDash';
+import UserDashboard from './UserComponents/UserDashboard';
 import EditStall from './GlobalComponents/EditStall';
+import UserEdit from './UserComponents/UserEdit';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Box } from "@mui/system";
 import { useState, createContext } from 'react';
@@ -33,7 +34,8 @@ function App() {
               <Route path="/hawkers/:id" element={<ShowStall />} />
               <Route path="/hawkers/:id/edit" element={<EditStall />} />
               <Route path="/hawkers/addstall" element={<AddStall />} />
-              {/* <Route path="/users/:id/" element={<UserDash />} /> */}
+              <Route path="/users/:id/" element={<UserDashboard />} />
+              <Route path="/users/:id/edit" element={<UserEdit />} />
             </Routes>
           </Box>
         </BrowserRouter>

@@ -1,5 +1,6 @@
 import React from "react";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
+import { DataContext } from "../App";
 import axios from "axios";
 import { Button, Card, CardActions, CardContent, CardMedia, Chip, Typography, Grid } from "@mui/material";
 import { Box } from '@mui/system';
@@ -14,6 +15,8 @@ function Homepage() {
     const [hawkers, setHawkers] = useState([]);
     const isSubscribed = useRef(true);
     const navigate = useNavigate();
+
+    const { user } = useContext(DataContext);
 
     //get the list of hawkers
     useEffect(() => {
@@ -44,6 +47,7 @@ function Homepage() {
 
     console.log(hawkers)
 
+    
     const hawkersArrRender = hawkers?.map((eachHawker, i) => {
         const Openornot = () => {
             if (eachHawker.AmIOpen === true) {
@@ -52,7 +56,12 @@ function Homepage() {
                 return ("I am closed today")
             }
         }
-
+        
+        const addToFaves = async () => {
+            const response = await fetch(`/api/users/${user._id}/${eachHawker._id}`, {
+                method: "PUT"
+            });
+        }
 
         return (
             <Grid item sm={4} key={i}>
@@ -75,7 +84,7 @@ function Homepage() {
                         <Link to={`/hawkers/${eachHawker._id}`}>
                             <Button>More</Button>
                         </Link>
-                        <Button>Add To Favourites</Button>
+                        <Button onClick={() => addToFaves()}>Add To Favourites</Button>
                     </CardActions>
                 </Card>
             </Grid>

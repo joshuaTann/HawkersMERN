@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const seedUsers = require("../seedData/seedUsers");
+const Hawkers = require("../models/hawkers");
 const Users = require("../models/users");
 const bcrypt = require("bcrypt");
 
@@ -32,7 +33,7 @@ router.get("/", async (req, res) => {
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
 
-  const thisUser = await Users.findById(id).populate("stalls");
+  const thisUser = await Users.findById(id).populate("stalls").populate("favourites");
 
   res.json(thisUser);
 });
@@ -63,17 +64,34 @@ router.post("/new", async (req, res) => {
   }
 });
 
+//!ADDING A FAVOURITE
+router.put("/:id/:hawker", async (req, res) => {
+  const { id, hawker } = req.params;
+  console.log(id, hawker)
+  const updated = await Users.findByIdAndUpdate(id, { $push: { favourites: hawker } })
+  res.status(200).json(updated);
+});
+
 //! UPDATE
 router.put("/:id", async (req, res) => {
   const { id } = req.params;
   const updatedUserData = req.body;
-  
   const updatedUser = await Users.findByIdAndUpdate(id, updatedUserData);
-  res.json(updatedUser);
+  console.log(updatedUser);
+  res.status(200).json(updatedUser);
 });
 
-//! DESTROY
 
+//!REMOVING A FAVOURITE
+router.delete("/:id/:hawker", async (req, res) => {
+  const { id, hawker } = req.params;
+  console.log(id, hawker)
+  const updated = await Users.findByIdAndUpdate(id, { $pull: { favourites: hawker } })
+  res.status(200).json(updated);
+});
+
+
+//! DESTROY
 router.delete("/:id", async (req, res) => {
   const { id } = req.params;
   console.log("at backend, ID is:", id);
@@ -87,5 +105,8 @@ router.delete("/:id", async (req, res) => {
   });
   console.log(deletedItem);
 });
+
+
+
 
 module.exports = router;

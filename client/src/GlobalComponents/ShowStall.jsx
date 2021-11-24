@@ -74,6 +74,7 @@ function ShowStall() {
             <div>Regular hours:</div>
             <div>{hawker.OpeningTime} to {hawker.ClosingTime}</div>
             <Button onClick={() => back()}>Back</Button>
+            <div>Leaving these buttons in for convenience</div>
             <Button onClick={() => deleteStall()}>Delete</Button>
             <Link to={`/Hawkers/${id}/edit/`}>
                 <Button>Edit</Button>
