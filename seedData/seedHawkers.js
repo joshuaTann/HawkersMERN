@@ -8,6 +8,7 @@ const seedHawkers = [
         OpeningTime: 1200,
         ClosingTime: 1800,
         AmIOpen: true,
+        owner: "619d02e012898462f77166df",
     },
     {
         Name: "Duck Rice",
@@ -18,6 +19,7 @@ const seedHawkers = [
         OpeningTime: 1300,
         ClosingTime: 1900,
         AmIOpen: true,
+        owner: "619d02e012898462f77166df",
     },
     {
         Name: "Bat Soup",
@@ -28,6 +30,7 @@ const seedHawkers = [
         OpeningTime: 1300,
         ClosingTime: 1900,
         AmIOpen: true,
+        owner: "619db3eba2853f227b62766e",
     },
 ]
 
