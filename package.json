@@ -1,10 +1,35 @@
 {
+  "name": "hawkersmern",
+  "version": "1.0.0",
+  "description": "Have you ever had a craving for your favourite hawker, checked online for their opening hours, travelled all the way there in anticipation just to be greeted with a closed shutter?",
+  "main": "server.js",
+  
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "install-client": "cd client && npm install",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm run install-client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuaTann/HawkersMERN.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joshuaTann/HawkersMERN/issues"
+  },
+  "homepage": "https://github.com/joshuaTann/HawkersMERN#readme",
+  
   "dependencies": {
-    "bcrypt": "^5.0.1",
-    "dotenv": "^10.0.0",
-    "express": "^4.17.1",
-    "express-session": "^1.17.2",
-    "mongoose": "^6.0.13",
-    "nodemon": "^2.0.15"
-  }
+      "bcrypt": "^5.0.1",
+      "dotenv": "^10.0.0",
+      "express": "^4.17.1",
+      "express-session": "^1.17.2",
+      "mongoose": "^6.0.13",
+      "nodemon": "^2.0.15"
+    }
 }
