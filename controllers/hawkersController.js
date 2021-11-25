@@ -71,6 +71,7 @@ router.delete("/:id", async (req, res) => {
     console.log("Stall Owner", userIDnumber);
     const result = await Hawkers.findByIdAndDelete(id);
     const user = await Users.findByIdAndUpdate(userIDnumber, { $pull: { stalls: id } });
+    const updatefaves = await Users.updateMany(favourites.includes(id), {$pull: { favourites: id } });
     res.json(result);
     
     
