@@ -65,9 +65,9 @@ function UserDashboard() {
                     </CardContent>
                     <CardActions>
                         <Button onClick={() => deleteStall()}>Delete</Button>
-                        <Link to={`/Hawkers/${eachHawker._id}/edit/`}>
+                        <NavLink to={`/Hawkers/${eachHawker._id}/edit/`}>
                             <Button>Edit</Button>
-                        </Link>
+                        </NavLink>
                     </CardActions>
                 </Card>
             </Grid>
