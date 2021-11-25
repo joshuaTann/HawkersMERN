@@ -9,9 +9,10 @@ import AddStall from './GlobalComponents/AddStall';
 import UserDashboard from './UserComponents/UserDashboard';
 import EditStall from './GlobalComponents/EditStall';
 import UserEdit from './UserComponents/UserEdit';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Box } from "@mui/system";
 import { useState, createContext } from 'react';
+
 
 
 export const DataContext = createContext();
@@ -27,6 +28,7 @@ function App() {
           <NavigationBar />
           <Box sx={{ width: "90vw", margin: "auto" }}>
             <Routes>
+              <Route path="/" element={<Navigate replace to="/hawkers" />} />
               <Route path="/hawkers" element={<Homepage/>} />
               <Route path="/about" element={<About />} />
               <Route path="/login" element={<Login />} />
