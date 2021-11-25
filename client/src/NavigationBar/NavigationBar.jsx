@@ -36,10 +36,6 @@ function NavigationBar() {
 
     const loggedInButtons = [
         <>
-            <NavLink to="/notifications" style={{ textDecoration: "none" }}>
-                <Button sx={{ color: "white" }}>Notifications</Button>
-            </NavLink>
-
             <NavLink to={`/users/${user._id}/`} style={{ textDecoration: "none" }}>
                 <div className="keepInline">
                     <Button sx={{ color: "white" }}>My Account</Button>
