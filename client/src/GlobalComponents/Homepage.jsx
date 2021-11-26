@@ -47,7 +47,7 @@ function Homepage() {
 
     console.log(hawkers)
 
-    
+
     const hawkersArrRender = hawkers?.map((eachHawker, i) => {
         const Openornot = () => {
             if (eachHawker.AmIOpen === true) {
@@ -56,11 +56,19 @@ function Homepage() {
                 return ("I am closed today")
             }
         }
-        
+
         const addToFaves = async () => {
             const response = await fetch(`/api/users/${user._id}/${eachHawker._id}`, {
                 method: "PUT"
             });
+        }
+
+        const areweloggedin = () => {
+            if (!!user._id === true) {
+                return (
+                    <Button onClick={() => addToFaves()}>Add To Favourites</Button>
+                );
+            } 
         }
 
         return (
@@ -84,7 +92,7 @@ function Homepage() {
                         <Link to={`/hawkers/${eachHawker._id}`}>
                             <Button>More</Button>
                         </Link>
-                        <Button onClick={() => addToFaves()}>Add To Favourites</Button>
+                        {areweloggedin()}
                     </CardActions>
                 </Card>
             </Grid>
